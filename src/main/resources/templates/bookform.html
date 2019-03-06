@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Title</title>
+</head>
+<!--String sku = "";-->
+<!--String bookTitle = "";-->
+<!--String author = "";-->
+<!--String description = "";-->
+<!--double price = 0.0;-->
+<!--String isInStock = "";-->
+<!--int amount = 0;-->
+<body>
+<div th:replace="base :: navlinks"></div>
+<form autocomplete="off" class="form-horizontal" action="#" th:action="@{/process}" th:object="${book}" method="post">
+    <div class="ui-widget">
+        <div class="form-inline">
+            <input type="hidden" th:field="*{id}" />
+            <label class="control-label col-sm-1" for="tags">SKU :</label>
+            <div class="col-auto">
+                <input type="text" class="form-control basicAutoComplete" id="sku" placeholder="Enter SKU" th:field="*{sku}" />
+                <span th:if="${#fields.hasErrors('sku')}"
+                      th:errors="*{sku}"></span><br />
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="form-inline">
+        <label class="control-label col-sm-1" for="tags">Book Title:</label>
+        <div class="col-auto">
+            <input type="text" class="form-control basicAutoComplete" id="book title" placeholder="Enter Book Title" th:field="*{bookTitle}" />
+            <span th:if="${#fields.hasErrors('bookTitle')}"
+                  th:errors="*{bookTitle}"></span><br />
+        </div>
+    </div>
+    <br>
+    <div class="form-inline">
+        <label class="control-label col-sm-1" for="tags">Author :</label>
+        <div class="col-auto">
+            <input type="text" class="form-control basicAutoComplete" id="author" placeholder="Enter Author name" th:field="*{author}" />
+            <span th:if="${#fields.hasErrors('author')}"
+                  th:errors="*{author}"></span><br />
+        </div>
+    </div>
+    <br />
+    <div class="form-inline">
+        <label class="control-label col-sm-1" for="tags">Description:</label>
+        <div class="col-auto">
+            <input type="text" class="form-control basicAutoComplete" id="description" placeholder="Enter Description" th:field="*{description}" />
+            <span th:if="${#fields.hasErrors('description')}"
+                  th:errors="*{description}"></span><br />
+        </div>
+    </div>
+    <br>
+    <br />
+    <div class="form-inline">
+        <label class="control-label col-sm-1" for="tags">Price :</label>
+        <div class="col-auto">
+            <input type="text" class="form-control basicAutoComplete" id="price" placeholder="Enter Price" th:field="*{price}" />
+            <span th:if="${#fields.hasErrors('price')}"
+                  th:errors="*{price}"></span><br />
+        </div>
+    </div>
+    <br>
+    <br />
+    <div class="form-inline">
+        <label class="control-label col-sm-1" for="tags">In Stock :</label>
+        <div class="col-auto">
+            <input type="radio" class="radio-inline"  id="stock" name="stock" value="Yes" th:field="*{isInStock}"> Yes &nbsp;
+            <input type="radio" class="radio-inline" name="stock" value="No" th:field="*{isInStock}"> No
+            <span th:if="${#fields.hasErrors('isInStock')}"
+                  th:errors="*{isInStock}"></span><br />
+        </div>
+    </div>
+    <br>
+    <br />
+    <div class="form-inline">
+        <label class="control-label col-sm-1" for="tags">Amount :</label>
+        <div class="col-auto">
+            <input type="text" class="form-control basicAutoComplete" id="tags" placeholder="Enter amount in stock" th:field="*{amount}" />
+            <span th:if="${#fields.hasErrors('amount')}"
+                  th:errors="*{amount}"></span><br />
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+            <button type="submit"  class="btn btn-outline-dark">Submit</button>
+        </div>
+    </div>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
