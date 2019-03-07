@@ -4,45 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Book List</title>
+    <title><span th:text="${book.bookTitle}" ></span></title>
 </head>
 <body>
 <div th:replace="base :: navlinks"></div>
-<table class="table">
-    <tr>
-        <th>SKU</th>
-        <th>Book Title</th>
-        <th>Author(s)</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>In Stock</th>
-        <th>Amount</th>
-        <td>Actions</td>
-    </tr>
-    <tr th:each="book : ${books}">
-        <td th:text="${book.sku}"></td>
-        <td th:text="${book.bookTitle}"></td>
-        <td th:text="${#lists.size(book.authors)>0}?'None'">
-            <div th:each="author:${book.authors}">
-                <span th:text="${author.author.name}"></span>
-            </div>
-        </td>
-        <td th:text="${book.description}"></td>
-        <td th:text="${book.price}"></td>
-        <td th:text="${book.isInStock}"></td>
-        <td th:text="${book.amount}"></td>
-        <td>
-            <a th:href="@{/updatebook/{id}(id=${book.id})}">Update</a> -
-            <a th:href="@{/detailbook/{id}(id=${book.id})}">Details</a> -
-            <a th:href="@{/deletebook/{id}(id=${book.id})}">Delete</a>
-        </td>
-    </tr>
-</table>
-<br>
+<a href="/booklist">Show Book List</a><br><br>
+SKU : <span th:text="${book.sku}" ></span><br>
+Book Title : <span th:text="${book.bookTitle}" ></span> <br />
+Author :
+    <div th:each="author:${book.authors}">
+        <span th:text="${author.author}"></span>
+    </div>
+</th:block> <br />
+Description : <span th:text="${book.description}" ></span> <br />
+Price : <span th:text="${book.price}" ></span> <br />
+In Stock : <span th:text="${book.isInStock}" ></span> <br />
+Amount : <span th:text="${book.amount}" ></span><br><br>
+<a th:href="@{/delete/{id}(id=${book.id})}" >Delete this Book</a>
+
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>

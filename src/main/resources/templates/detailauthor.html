@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title><span th:text="${book.bookTitle}" ></span></title>
+    <title><span th:text="${author.name}" ></span></title>
 </head>
 <body>
 <div th:replace="base :: navlinks"></div>
-<a href="/">Show Book List</a><br><br>
-SKU : <span th:text="${book.sku}" ></span><br>
-Book Title : <span th:text="${book.bookTitle}" ></span> <br />
-Author : <span th:text="${book.author}" ></span> <br />
-Description : <span th:text="${book.description}" ></span> <br />
-Price : <span th:text="${book.price}" ></span> <br />
-In Stock : <span th:text="${book.isInStock}" ></span> <br />
-Amount : <span th:text="${book.amount}" ></span><br><br>
-<a th:href="@{/delete/{id}(id=${book.id})}" >Delete this Task</a>
+<a href="/authorlist">Show Author List</a><br><br>
+Name : <span th:text="${author.name}" ></span><br>
+Year Born : <span th:text="${author.year}" ></span> <br />
+Books :
+    <div th:each="book:${author.books}">
+        <span th:text="${book.book}"></span>
+    </div>
+</th:block> <br />
+<a th:href="@{/delete/{id}(id=${author.id})}" >Delete this Author</a>
 
 
 

@@ -39,11 +39,16 @@
     </div>
     <br>
     <div class="form-inline">
-        <label class="control-label col-sm-1" for="tags">Author :</label>
+        <label class="control-label col-sm-1" for="author">Author :</label>
         <div class="col-auto">
-            <input type="text" class="form-control basicAutoComplete" id="author" placeholder="Enter Author name" th:field="*{author}" />
-            <span th:if="${#fields.hasErrors('author')}"
-                  th:errors="*{author}"></span><br />
+            <div th:switch="${#lists.size(authors) > 0}">
+                <span th:case="false"><input type="text"  disabled></span>
+                <select th:case="true" th:field="*{authors}" id="author" multiple>
+                <option th:each ="author:${authors}" th:value="${author.id}" th:text="${author.name}"></option>
+            </select>
+                <p th:case="*">error</p>
+            </div>
+            </div>
         </div>
     </div>
     <br />
